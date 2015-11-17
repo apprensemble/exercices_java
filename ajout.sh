@@ -11,21 +11,19 @@ do
   echo "--------------------------------------------------"
 
   echo "--------------------------------------------------"
+  echo " choix : "
   echo "r->regex;f->fin;p->phrase;e->executer;s->sauvegarder"
   echo "ch->changement fichier dest;l->lecture dest"
   echo "--------------------------------------------------"
-  echo " "
-  read -e choix
+  read -e -p "choix > " choix
   if [ "$choix" == "f" ];then exit 0;fi
   if [ "$choix" == "r" ];then
-    echo "veuillez entrer une regex : "
-    read -p "$regex" -e regex 
-    echo "regex : $regex"
+    read -p "veuillez entrer une regex : " -i "$regex" -e regex 
+    echo "nouvelle regex : $regex"
   fi
   if [ "$choix" == "p" ];then
-    echo "veuillez entrer une phrase"
-    read -p "$phrase" -e phrase
-    echo "phrase : $phrase"
+    read -p "veuillez entrer une phrase : " -i "$phrase" -e phrase
+    echo "nouvelle phrase : $phrase"
   fi
   if [ "$choix" == "e" ];then
     echo "execution $regex sur $phrase"
@@ -33,8 +31,7 @@ do
   fi
   if [ "$choix" == "s" ];then 
     echo "sauvegarde vers le fichier \"$dest\""
-    echo "commentaire : "
-    read -e commentaire
+    read -e -p "commentaire : " commentaire
     echo "echo \" 
     ---------------------------------------
     $commentaire
@@ -45,8 +42,7 @@ do
     less $dest
   fi
   if [ "$choix" == "ch" ];then
-    echo "changement de dest $dest vers : "
-    read -p $dest -e dest
+    read -p "changement de dest $dest vers : " -i $dest -e dest
     echo "nouvelle destination : $dest"
   fi
 done
