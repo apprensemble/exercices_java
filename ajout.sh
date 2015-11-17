@@ -1,28 +1,40 @@
 #!/usr/bin/env bash
 set -o vi
 choix=1;
+function info {
+  echo "--------------------------------------------------"
+  echo "infos : regex->$regex ;phrase->$phrase;dest->$dest"
+  echo "--------------------------------------------------"
+}
+function menu {
+  echo "--------------------------------------------------"
+  echo " choix : "
+  echo "i->infos;m->menu"
+  echo "r->regex;f->fin;p->phrase;e->executer"
+  echo "ch->ch fic sauv;l->lecture fic sauv;s->sauvegarder"
+  echo "--------------------------------------------------"
+}
+menu
 while [ "$choix" ];
 do
   if [ -z "$dest" ];then
     dest=reponse
+    info
   fi
-  echo "--------------------------------------------------"
-  echo "infos : regex->$regex ;phrase->$phrase;dest->$dest"
-  echo "--------------------------------------------------"
-
-  echo "--------------------------------------------------"
-  echo " choix : "
-  echo "r->regex;f->fin;p->phrase;e->executer;s->sauvegarder"
-  echo "ch->changement fichier dest;l->lecture dest"
-  echo "--------------------------------------------------"
   read -e -p "choix > " choix
+  if [ "$choix" == "i" ];then
+    info
+  fi
+  if [ "$choix" == "m" ];then
+    menu
+  fi
   if [ "$choix" == "f" ];then exit 0;fi
   if [ "$choix" == "r" ];then
-    read -p "veuillez entrer une regex : " -i "$regex" -e regex 
+    read -r -p "veuillez entrer une regex : " -i "$regex" -e regex
     echo "nouvelle regex : $regex"
   fi
   if [ "$choix" == "p" ];then
-    read -p "veuillez entrer une phrase : " -i "$phrase" -e phrase
+    read -r -p "veuillez entrer une phrase : " -i "$phrase" -e phrase
     echo "nouvelle phrase : $phrase"
   fi
   if [ "$choix" == "e" ];then
