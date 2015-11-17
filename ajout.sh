@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o vi
 choix=1;
 while [ "$choix" ];
 do
@@ -7,12 +8,12 @@ do
   if [ "$choix" == "f" ];then exit 0;fi
   if [ "$choix" == "r" ];then
     echo "veuillez entrer une regex : "
-    read regex
+    read -e regex
     echo "regex : $regex"
   fi
   if [ "$choix" == "p" ];then
     echo "veuillez entrer une phrase"
-    read phrase
+    read -e phrase
     echo "phrase : $phrase"
   fi
   if [ "$choix" == "e" ];then
@@ -29,8 +30,11 @@ do
       read dest
       echo $dest
     fi
+    if [ -z "$dest" ];then
+      dest=reponse
+    fi
     echo "commentaire : "
-    read commentaire
+    read -e commentaire
     echo "echo $commentaire">>$dest
     echo "java Regme \"$phrase\" \"$regex\"">>$dest
   fi
