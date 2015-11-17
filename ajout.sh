@@ -19,12 +19,12 @@ do
   if [ "$choix" == "f" ];then exit 0;fi
   if [ "$choix" == "r" ];then
     echo "veuillez entrer une regex : "
-    read -e regex
+    read -p "$regex" -e regex 
     echo "regex : $regex"
   fi
   if [ "$choix" == "p" ];then
     echo "veuillez entrer une phrase"
-    read -e phrase
+    read -p "$phrase" -e phrase
     echo "phrase : $phrase"
   fi
   if [ "$choix" == "e" ];then
@@ -32,7 +32,7 @@ do
     java Regme "$phrase" "$regex"
   fi
   if [ "$choix" == "s" ];then 
-    echo "sauvegarde vers le fichier \"$reponse\""
+    echo "sauvegarde vers le fichier \"$dest\""
     echo "commentaire : "
     read -e commentaire
     echo "echo \" 
@@ -46,7 +46,7 @@ do
   fi
   if [ "$choix" == "ch" ];then
     echo "changement de dest $dest vers : "
-    read -e dest
+    read -p $dest -e dest
     echo "nouvelle destination : $dest"
   fi
 done
