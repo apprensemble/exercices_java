@@ -36,3 +36,4 @@ echo "
     etrange resultat
     ---------------------------------------"
 java Regme "canal" "(?=.*[a-z])(?![ae])"
+echo "joli"
