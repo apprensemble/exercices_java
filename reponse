@@ -1,0 +1,38 @@
+echo exercice 2 : -256.08; 45.302
+java Regme "-256.08" "^-?\d+.\d+"
+echo Exercice 3 : 0033-34423-4485 +33-34423-4485
+java Regme "0033-34423-4485" "^(0033|\+33)-[1-7]\d{4}-\d{4}"
+echo foireux ex4
+java Regme "-26e-03" "^-?\d+.\d+e-?\d+"
+echo Exercice 4 : 2e7 26e-3 -26e-03 4.58e-1
+java Regme "-26e-03" "^-?\d+e-?\d+"
+echo exercice 4 : ok cette fois
+java Regme "-26e-3" "^-?(\d+.\d+|\d+)e-?\d+"
+echo Exercice 5 : parlement
+java Regme "parlement" "^[a-zA-Z]+le[a-zA-Z]+"
+echo Exercice 6 : une suite de chiffre a l'interieur d'un mot Ax25By
+java Regme "aX2az" "^[a-zA-Z]+\d+[a-zA-Z]+"
+echo Exercice 7 : horrible java pour les regex trouve : { "args" : [1,5] } et capture 1 et 5
+java Regme "{ "args" : [1,5], "args" : [20,20] }" "\{.*("args"\s*:\s*\[(d+),(d+)\].*)*\}"
+echo ex 8 : sans lookahead
+java Regme "utcd123" "^(utc[a-zA-Z])\d{3}"
+echo exercice 8 : avec lookahead
+java Regme "utcd123" "(utc(?=[a-zA-Z])).\d+"
+echo "exercice 8 : lookahead capture utc[a-dA-D] a condition d'etre suivi par 3 chiffres"
+java Regme "utcd123" "(utc[a-dA-D])(?=\d{3})"
+echo exercice 9 : version courte
+java Regme "a512b.3.51" "[^0-9](?=[0-9][0-9]{2})"
+echo exercice 9 : version longue
+java Regme "a512b.3.51" "([^0-9](?=[0-9][0-9]{2}).*)"
+echo essai
+java Regme "utcd123" "utc(?=[a-zA-Z]).\d+"
+echo " 
+    ---------------------------------------
+    exercice 9 avec la nouvelle version
+    ---------------------------------------"
+java Regme "utcd123" "(utc(?=[a-zA-Z])).\d+"
+echo " 
+    ---------------------------------------
+    etrange resultat
+    ---------------------------------------"
+java Regme "canal" "(?=.*[a-z])(?![ae])"
