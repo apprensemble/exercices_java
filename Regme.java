@@ -22,6 +22,10 @@ public class Regme {
       System.out.println("Position fin : " + m.end());
       System.out.println("Apres : " + text.substring(m.end()));
     }
+    else {
+      System.out.println("pas trouve!\n");
+
+    }
   }
   public static void main(String[] args) {
     // TODO Auto-generated method stub

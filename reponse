@@ -1,0 +1,15 @@
+echo essai
+java Regme "0" "0"
+echo exercice 3 num tel fr
+java Regme "+33-35367-3567" "(^0033|^[+]33)-(\d{5})-(\d{4})"
+echo exercice 4 float number
+java Regme "234" "[+-]?\d*e[+-]?\d*"
+echo exercice 5 contenant le a l interieur
+java Regme "parellellepipede" "[a-z]+le[a-z]+"
+echo exercice 6 chiffres dans les mots
+java Regme "" "^[a-z]+[1-9]+[a-z]+$"
+echo " 
+    ---------------------------------------
+    exercice 8 : version courte
+    ---------------------------------------"
+java Regme "utcd123" "(utc(?=[a-zA-Z])).\d+"
