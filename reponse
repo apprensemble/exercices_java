@@ -1,0 +1,6 @@
+echo " 
+    ---------------------------------------
+    essai d'ajout de fichier sur github
+    ---------------------------------------"
+java Regme "bbce.fr/ty2" "(?i)(?=.*\d)(?=.*[a-z])(?=.*\p{Punct}).{8,}"
+coucou
